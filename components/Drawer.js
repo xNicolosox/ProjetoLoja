@@ -17,10 +17,10 @@ export default function Drawer() {
         <button className={isActive("/produtos")}>Produtos</button>
       </Link>
       <Link href="/vendas">
-        <button className={isActive("/vendas")}>Minhas Vendas</button>
+        <button className={isActive("/vendas")}>Minhas vendas</button>
       </Link>
       <Link href="/meus-dados">
-        <button className={isActive("/meus-dados")}>Meus Dados</button>
+        <button className={isActive("/meus-dados")}>Meus dados</button>
       </Link>
     </div>
   );

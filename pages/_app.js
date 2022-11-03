@@ -11,6 +11,12 @@ function MyApp({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
   });
 
+const router = useRouter();
+function showDrawer(){
+  const blacklist = ["/login","/nova-conta","/"];
+  return !blacklist.includes(router.pathname);
+}
+
   return (
     <>
       <Head>
@@ -21,7 +27,8 @@ function MyApp({ Component, pageProps }) {
         <Navbar />
       </header>
       <div className="row">
-        <div className="col-md-12 bg-light">
+        {showDrawer()? <Drawer/> :""}
+        <div className= {showDrawer() ? "col-md-10 bg-light" : "col-md-12 bg-light" }>
           <Component {...pageProps} />
         </div>
       </div>

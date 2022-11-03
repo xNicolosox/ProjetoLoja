@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <footer className="border-top footer text-white bg-dark p-3">
         <div className="container">
-          <div className="text-center p-3">Nossas Redes:</div>
+          <div className="text-center p-3">Nossas redes sociais:</div>
           <div className="text-center">
             <Icon.Facebook className="m-2" size={36} />
             <Icon.Twitter className="m-2" size={36} />

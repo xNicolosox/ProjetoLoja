@@ -4,9 +4,9 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 export default function NavbarMarketplace() {
   return (
     <>
-      <Navbar expand="sm" className="border-bottom" style= {{backgroundColor: "#7a99f1de"}}>
+      <Navbar expand="sm" className="border-bottom" style= {{backgroundColor: "#1eebd9"}}>
         <Container fluid>
-          <Navbar.Brand>O MarketPlace</Navbar.Brand>
+          <Navbar.Brand>The MarketPlace</Navbar.Brand>
           <Navbar.Toggle aria-controls="nav" />
           <Navbar.Collapse id="nav" className="flex-grow-0">
             <Nav>

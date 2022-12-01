@@ -14,20 +14,14 @@ import {
   Pagination,
 } from "react-bootstrap";
 import ItemTable from "../../components/ItemTable";
-export default function produtos() {
- 
-  const data=[]
-  for (let i=0;i<10;i++){
-    data.push({
-        Image:"image",
-        name:`Produto ${i}`,
-        category:`Categoria ${i}`,
-        price:`R$ ${i},99`,
-        createdAt:"xx/xx/xxxx",
-      id:i,
-    })
-  } 
-  const header = ["FOTO", "NOME", "CATEGORIA", "PREÇO","CRIADO EM","AÇÕES"];
+import produtoService from "../../service/produto.service";
+
+export default function Produtos() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    produtoService.getProdutos().then((r) => setData(r));
+  });
+  const header = ["FOTO", "NOME", "CATEGORIA", "PREÇO", "CRIADO EM", "AÇÕES"];
   return (
     <>
       <Card className="m-md-5 p-md-5">
@@ -42,18 +36,14 @@ export default function produtos() {
             </InputGroup>
           </Col>
           <Col className="d-grid" md={2}>
-            <Link href="/categorias/cadastrar">
+            <Link href="/produtos/cadastrar">
               <Button> Adicionar</Button>
             </Link>
           </Col>
         </Row>
-        
-        <ItemTable data={data}  header ={header} detailLink="produtos" />
+
+        <ItemTable data={data} header={header} detailLink="produtos" />
       </Card>
     </>
   );
-  
-  }
-  
-  
-   
+}

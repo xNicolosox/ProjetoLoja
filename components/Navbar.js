@@ -1,10 +1,23 @@
 import Link from "next/link";
 import { Navbar, Container, Nav } from "react-bootstrap";
-
+import { useRouter } from "next/router";
+import { useAuthContext } from "../context/auth.context";
+import authService from "../service/auth.service";
 export default function NavbarMarketplace() {
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useAuthContext();
+  function handleLogout() {
+    authService.logout();
+    setIsAuthenticated(false);
+    router.push("/login");
+  }
   return (
     <>
-      <Navbar expand="sm" className="border-bottom" style= {{backgroundColor: "#1eebd9"}}>
+      <Navbar
+        expand="sm"
+        className="border-bottom"
+        style={{ backgroundColor: "#1eebd9" }}
+      >
         <Container fluid>
           <Navbar.Brand>The MarketPlace</Navbar.Brand>
           <Navbar.Toggle aria-controls="nav" />
@@ -19,9 +32,13 @@ export default function NavbarMarketplace() {
               <Link href="/" passHref>
                 <Nav.Link>Ajuda</Nav.Link>
               </Link>
-              <Link href="/login" passHref>
-                <Nav.Link>Entrar</Nav.Link>
-              </Link>
+              {isAuthenticated ? (
+                <Nav.Link onClick={handleLogout}>Sair</Nav.Link>
+              ) : (
+                <Link href="/login" passHref>
+                  <Nav.Link>Entrar</Nav.Link>
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

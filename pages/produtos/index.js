@@ -15,8 +15,10 @@ import {
 } from "react-bootstrap";
 import ItemTable from "../../components/ItemTable";
 import produtoService from "../../service/produto.service";
+import useAuth from "../../hooks/useAuth";
 
 export default function Produtos() {
+  useAuth();
   const [data, setData] = useState([]);
   useEffect(() => {
     produtoService.getProdutos().then((r) => setData(r));
@@ -42,7 +44,7 @@ export default function Produtos() {
           </Col>
         </Row>
 
-        <ItemTable data={data} header={header} detailLink="produtos" />
+        <ItemTable data={data} header={header} detailLink="produtos" editLink= "produtos/editar" />
       </Card>
     </>
   );

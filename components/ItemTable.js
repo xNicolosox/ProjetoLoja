@@ -41,7 +41,11 @@ export default function ItemTable(props) {
               )
             )}
             <th>
+              {props.editLink ? (<Link href = {`${props.editLink}/${e.id}`}>
               <Icon.PenFill color="green" />
+              </Link>) : (
+                ""
+              )}
               {props.detailLink ? (
                 <Link href={`${props.detailLink}/${e.id}`}>
                   <Icon.EyeFill />

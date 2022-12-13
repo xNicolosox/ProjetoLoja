@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Drawer from "../components/Drawer";
+import { AuthProvider } from "../context/auth.context";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -18,7 +19,7 @@ function showDrawer(){
 }
 
   return (
-    <>
+    <AuthProvider>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>ECommerce</title>
@@ -33,7 +34,7 @@ function showDrawer(){
         </div>
       </div>
       <Footer />
-    </>
+    </AuthProvider>
   );
 }
 
